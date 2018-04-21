@@ -1,6 +1,7 @@
 # eleme
 
-> 饿了么项目
+##饿了么点餐系统
+>Vue2.0 + Vuex + Vue-Router + Axios + JsonServer + ESLint +BetterScroll
 
 ## Build Setup
 

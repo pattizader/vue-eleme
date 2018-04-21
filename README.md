@@ -3,7 +3,7 @@
 >Vue2.0 + Vuex + Vue-Router + Axios + JsonServer + ESLint +BetterScroll
 
 实现功能
-==========
+--------------------------------------------
 ## Build Setup
 
 ``` bash

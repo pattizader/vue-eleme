@@ -42,8 +42,8 @@
     },
     watch: {
       food () {
-        if (this.food.quantity === 0){
-          this.$store.commit('emptyCart',this.food)
+        if (this.food.quantity === 0) {
+          this.$store.commit('emptyCart', this.food)
         }
       }
     }

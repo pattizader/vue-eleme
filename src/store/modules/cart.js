@@ -1,5 +1,3 @@
-import Vue from 'vue'
-
 const state = {
   cartList: [],
   showBtn: null
@@ -32,6 +30,7 @@ const actions = {
   addFoodToCart ({state, commit}, food) {
     const cartItem = state.cartList.find(item => item.name === food.name)
     if (!cartItem) {
+      console.log('0')
       commit('pushFoodToCart', {name: food.name, price: food.price})
     } else {
       commit('addFood', {name: food.name})
@@ -54,6 +53,7 @@ const mutations = {
       price,
       quantity: 1
     })
+    console.log(state.cartList)
     state.showBtn = true
   },
   addFoodQuantity (state, {name}) {

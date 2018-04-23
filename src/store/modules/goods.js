@@ -1,9 +1,11 @@
 import axios from '../../axios/index'
 const state = {
-  allGoods: []
+  allGoods: [],
+  isShowFood: false
 }
 
 const getters = {
+  showFood: state => state.isShowFood,
   goodsList: state => state.allGoods,
   foodsList (state) {
     let foods = []
@@ -44,6 +46,13 @@ const mutations = {
         selected.quantity--
       }
     })
+  },
+  showFoodDetail (state) {
+    state.isShowFood = true
+    console.log(state.isShowFood)
+  },
+  closeFoodDetail (state) {
+    state.isShowFood = false
   }
 }
 

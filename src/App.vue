@@ -7,18 +7,22 @@
       <div class="tab-item"><router-link to="/seller">商家</router-link></div>
     </div>
     <div class="content">
-      <router-view :seller="seller"></router-view>
+      <keep-alive>
+        <router-view :seller="seller"></router-view>
+      </keep-alive>
     </div>
+    <shopping-cart :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopping-cart>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Header from 'components/header/header'
-
+  import shoppingCart from 'components/shoppingCart/shoppingcart'
   export default {
     name: 'App',
     components: {
-      'v-header': Header
+      'v-header': Header,
+      shoppingCart
     },
     data () {
       return {

@@ -20,7 +20,7 @@
             <span></span>
             <span class="text">{{item.name}}</span>
           </div>
-            <div class="foods-content border-1px" v-for="food in item.foods" :key="food.name">
+            <div class="foods-content border-1px" v-for="food in item.foods" :key="food.name" @click="selectFood(food,$event)">
             <img class="food-img" :src="food.icon" width="57" height="57">
             <div class="food-info">
               <h2 class="food-name">{{food.name}}</h2>
@@ -36,22 +36,23 @@
           </div>
         </div>
       </div>
-      <shopping-cart :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopping-cart>
+      <!--食物详情-->
+      <food class="food-detail" :food="selectedFood" ref="food"></food>
     </div>
 </template>
 <script type="text/ecmascript-6">
   import icon from 'components/icon/icon'
   import BScroll from 'better-scroll'
-  import shoppingCart from 'components/shoppingCart/shoppingCart'
   import cartCount from 'components/cartCount/cartCount'
+  import food from 'pages/foodDetail/detail'
 
   import {mapGetters} from 'vuex'
   export default {
     name: 'goods',
     components: {
       icon,
-      shoppingCart,
-      cartCount
+      cartCount,
+      food
     },
     props: {
       seller: {
@@ -67,6 +68,7 @@
     },
     data () {
       return {
+        selectedFood: {},
         listHeight: [],
         scrollY: 0
       }
@@ -103,6 +105,14 @@
         let foodsList = this.$refs.foodsMenu.getElementsByClassName('foods-list-hook')
         let el = foodsList[index + 1]
         this.foodsScroll.scrollToElement(el, 300)
+      },
+      selectFood (food, event) {
+        if (!event._constructed) {
+          return
+        }
+        this.selectedFood = food
+        console.log('123')
+        this.$store.commit('showFoodDetail', food)
       }
     },
     computed: {
